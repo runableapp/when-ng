@@ -10,6 +10,7 @@ var All = []rules.Rule{
 	HourMinute(rules.Override),
 	Deadline(rules.Override),
 	PastTime(rules.Override),
+	SlashMDY(rules.Override),
 	ExactMonthDate(rules.Override),
 }
 

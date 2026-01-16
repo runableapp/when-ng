@@ -160,7 +160,7 @@ var NL *Parser
 func init() {
 	EN = New(nil)
 	EN.Add(en.All...)
-	EN.Add(common.All...)
+	EN.Add(common.SlashDMY(rules.Skip))
 
 	RU = New(nil)
 	RU.Add(ru.All...)

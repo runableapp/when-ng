@@ -1,6 +1,12 @@
 # ⚠️ WARNING
 > INFORMATION: This is a fork for my own use, extending English parsing to handle "last year" and "last (weekday)" phrases.
 
+### Fork changes
+
+- English: "last year" and "next year" now normalize to Jan 1, 00:00:00 of that year
+- English: "last (weekday)" support (e.g., "last monday")
+- English: slash dates parsed as MM/DD/YYYY (e.g., "5/20/2026")
+
 
 
 # when [![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/olebedev/when)

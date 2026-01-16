@@ -13,7 +13,7 @@ func CasualDate(s rules.Strategy) rules.Rule {
 	overwrite := s == rules.Override
 
 	return &rules.F{
-		RegExp: regexp.MustCompile("(?i)(?:\\W|^)(now|today|tonight|last\\s*night|(?:tomorrow|tmr|yesterday)\\s*|tomorrow|tmr|yesterday)(?:\\W|$)"),
+		RegExp: regexp.MustCompile(`(?i)(?:\W|^)(now|today|tonight|last\s*night|last\s*year|(?:tomorrow|tmr|yesterday)\s*|tomorrow|tmr|yesterday)(?:\W|$)`),
 		Applier: func(m *rules.Match, c *rules.Context, o *rules.Options, ref time.Time) (bool, error) {
 			lower := strings.ToLower(strings.TrimSpace(m.String()))
 
@@ -25,6 +25,10 @@ func CasualDate(s rules.Strategy) rules.Rule {
 				}
 			case strings.Contains(lower, "today"):
 				// c.Hour = pointer.ToInt(18)
+		case strings.Contains(lower, "last year"):
+			if c.Year == nil || overwrite {
+				c.Year = pointer.ToInt(ref.Year() - 1)
+			}
 			case strings.Contains(lower, "tomorrow"), strings.Contains(lower, "tmr"):
 				if c.Duration == 0 || overwrite {
 					c.Duration += time.Hour * 24

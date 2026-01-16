@@ -43,7 +43,7 @@ func Weekday(s rules.Strategy) rules.Rule {
 			case strings.Contains(norm, "past") || strings.Contains(norm, "last"):
 				diff := int(ref.Weekday()) - dayInt
 				if diff > 0 {
-					c.Duration = -time.Duration(diff*24) * time.Hour
+					c.Duration = -time.Duration((7+diff)*24) * time.Hour
 				} else if diff < 0 {
 					c.Duration = -time.Duration(7+diff) * 24 * time.Hour
 				} else {

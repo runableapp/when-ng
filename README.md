@@ -1,6 +1,10 @@
+# ⚠️ WARNING
+> INFORMATION: This is a fork for my own use, extending English parsing to handle "last year" and "last (weekday)" phrases.
+
+
+
 # when [![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/olebedev/when)
 
-> `when` is a natural language date/time parser with pluggable rules and merge strategies
 
 ### Examples
 
@@ -9,6 +13,8 @@
 - the deadline is **next tuesday 14:00**
 - drop me a line **next wednesday at 2:25 p.m**
 - it could be done at **11 am past tuesday**
+- **last year**
+- **last monday**
 
 Check [EN](https://github.com/olebedev/when/blob/master/rules/en) rules and tests of them, for more examples.
 

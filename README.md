@@ -1,5 +1,5 @@
 # ⚠️ WARNING
-> INFORMATION: This is a fork for my own use, extending English parsing to handle "last year" and "last (weekday)" phrases.
+> INFORMATION: This is a fork for my own use, extending English parsing.
 
 ### Fork changes
 

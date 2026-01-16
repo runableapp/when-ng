@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/AlekSi/pointer"
-	"github.com/olebedev/when/rules"
+	"github.com/runableapp/when-ng/rules"
 	"github.com/pkg/errors"
 )
 

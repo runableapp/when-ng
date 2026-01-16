@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/olebedev/when/rules"
+	"github.com/runableapp/when-ng/rules"
 )
 
 /*

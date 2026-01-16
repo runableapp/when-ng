@@ -1,7 +1,7 @@
 package ru
 
 import (
-	"github.com/olebedev/when/rules"
+	"github.com/runableapp/when-ng/rules"
 	"time"
 )
 

@@ -1,7 +1,7 @@
 package zh_test
 
 import (
-	"github.com/olebedev/when"
+	"github.com/runableapp/when-ng"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"

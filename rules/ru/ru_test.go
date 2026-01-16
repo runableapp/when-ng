@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/olebedev/when"
-	"github.com/olebedev/when/rules/ru"
+	"github.com/runableapp/when-ng"
+	"github.com/runableapp/when-ng/rules/ru"
 	"github.com/stretchr/testify/require"
 )
 

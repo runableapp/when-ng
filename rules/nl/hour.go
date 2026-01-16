@@ -8,7 +8,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/olebedev/when/rules"
+	"github.com/runableapp/when-ng/rules"
 )
 
 /*

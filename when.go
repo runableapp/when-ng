@@ -4,13 +4,13 @@ import (
 	"sort"
 	"time"
 
-	"github.com/olebedev/when/rules"
-	"github.com/olebedev/when/rules/br"
-	"github.com/olebedev/when/rules/common"
-	"github.com/olebedev/when/rules/en"
-	"github.com/olebedev/when/rules/nl"
-	"github.com/olebedev/when/rules/ru"
 	"github.com/pkg/errors"
+	"github.com/runableapp/when-ng/rules"
+	"github.com/runableapp/when-ng/rules/br"
+	"github.com/runableapp/when-ng/rules/common"
+	"github.com/runableapp/when-ng/rules/en"
+	"github.com/runableapp/when-ng/rules/nl"
+	"github.com/runableapp/when-ng/rules/ru"
 )
 
 // Parser is a struct which contains options

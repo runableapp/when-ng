@@ -1,6 +1,6 @@
 package br
 
-import "github.com/olebedev/when/rules"
+import "github.com/runableapp/when-ng/rules"
 
 var All = []rules.Rule{
 	Weekday(rules.Override),

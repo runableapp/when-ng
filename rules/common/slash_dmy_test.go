@@ -4,9 +4,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/olebedev/when"
-	"github.com/olebedev/when/rules"
-	"github.com/olebedev/when/rules/common"
+	"github.com/runableapp/when-ng"
+	"github.com/runableapp/when-ng/rules"
+	"github.com/runableapp/when-ng/rules/common"
 )
 
 func TestSlashDMY(t *testing.T) {

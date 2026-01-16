@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/olebedev/when/rules"
+	"github.com/runableapp/when-ng/rules"
 )
 
 // https://play.golang.org/p/aRWlil_64M

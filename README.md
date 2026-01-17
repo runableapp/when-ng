@@ -22,7 +22,7 @@ This fork extends English parsing with the following additions:
    - Example: `"last year"` → January 1st of last year at midnight
 
 2. **Last weekday support**: Added support for "last <weekday>" phrases (e.g., "last monday", "last friday")
-   - Example: `"last monday"` → The most recent Monday in the past
+   - Example: `"last monday"` → Monday of the previous week (not the most recent past Monday)
 
 3. **MM/DD/YYYY date format**: Added `SlashMDY` rule to parse American-style slash dates
    - Example: `"5/20/2026"` → May 20th, 2026

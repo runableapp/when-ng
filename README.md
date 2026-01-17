@@ -1,18 +1,43 @@
-# ⚠️ WARNING
-> INFORMATION: This is a fork for my own use, extending English parsing.
 
-### Fork changes
+# when-ng
 
-- English: "last year" and "next year" now normalize to Jan 1, 00:00:00 of that year
-- English: "last (weekday)" support (e.g., "last monday")
-- English: slash dates parsed as MM/DD/YYYY (e.g., "5/20/2026")
+when-ng is a fork of https://github.com/olebedev/when, tailored for use in Ruanble.app projects.
+
+* Upstream commit used: `efeef445de938fe5bbaac704d9d1d9b69d66216d`
+* Upstream branch used: `master`
+* This was forked on: 2025-01-16
+
+**Note:** 
+- ⚠️ This repository is **not accepting pull requests (PRs)**.  
+We welcome [issues and support requests](https://github.com/runableapp/when-ng/issues), but this fork is *not intended for upstream merging* or general open-source collaboration.  
+- It is customized primarily for use within [Runable.app](https://runable.app/) projects.
+- Support for other languages (Dutch: `nl`, Russian: `ru`, Chinese: `zh`, Brazilian Portuguese: `br`) is available *as is*, reflecting the state of those rules as of the last forked date. We are unable to accept feature requests or make improvements for these non-English language rules.
 
 
+## Fork changes
 
-# when [![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/olebedev/when)
+This fork extends English parsing with the following additions:
+
+1. **Year normalization**: "last year" and "next year" now normalize to January 1st, 00:00:00 of that year (instead of preserving the current month/day)
+   - Example: `"last year"` → January 1st of last year at midnight
+
+2. **Last weekday support**: Added support for "last <weekday>" phrases (e.g., "last monday", "last friday")
+   - Example: `"last monday"` → The most recent Monday in the past
+
+3. **MM/DD/YYYY date format**: Added `SlashMDY` rule to parse American-style slash dates
+   - Example: `"5/20/2026"` → May 20th, 2026
+   - Example: `"5/20/2026 at 23:42"` → May 20th, 2026 at 11:42 PM
+   - Note: This takes precedence over the common DD/MM/YYYY format for English rules
+
+4. **Standard date/time format parsing** (Common rule): The parser now tries Go's built-in date/time parsing first for standard formats (ISO 8601, RFC3339, etc.) before falling back to natural language parsing. The `ISODate` rule is available in common rules for all languages.
+   - Example: `"2020-05-22T15:55-04:00"` → Parsed as RFC3339 format (2020-05-22T15:55:00-04:00)
+   - Example: `"2026-01-16 04:00:00 AM"` → Parsed as ISO format with AM/PM (2026-01-16T04:00:00-05:00)
+   - Supported formats include: RFC3339, RFC3339Nano, ISO 8601 (with/without timezone, with/without AM/PM)
+   - If standard format parsing fails, the parser falls back to natural language parsing rules
+   - Note: This is a common rule (available to all languages), not English-specific
 
 
-### Examples
+## Examples
 
 - **tonight at 11:10 pm**
 - at **Friday afternoon**
@@ -20,12 +45,14 @@
 - drop me a line **next wednesday at 2:25 p.m**
 - it could be done at **11 am past tuesday**
 - **last year**
-- **last monday**
+- **last monday**  
+  - _Note: For phrases like **"last monday"**, the parser interprets this as the Monday of the previous week. For example, if today is Friday, "last monday" refers to the Monday from the prior week—not the current week. If you want this week's Monday (the most recent Monday), use "this monday" or "past monday" instead. This behavior matches common interpretations of "last <weekday>" in English, meaning the weekday in the week before the current one._
+
 
 Check [EN](https://github.com/olebedev/when/blob/master/rules/en) rules and tests of them, for more examples.
 
 **Needed rule not found?**
-Open [an issue](https://github.com/olebedev/when/issues/new) with the case and it will be added asap.
+Open [an issue](https://github.com/runableapp/when-nr/issues/new) with the case and it will be added asap.
 
 ### How it works
 
@@ -44,6 +71,9 @@ After that, each rule is applied to the context. In order of definition or in ma
 ### Supported Languages
 
 - [EN](https://github.com/olebedev/when/blob/master/rules/en) - English
+
+### ⚠️ Legacy Supported Languages 
+(no further improvements planned)
 - [RU](https://github.com/olebedev/when/blob/master/rules/ru) - Russian
 - [BR](https://github.com/olebedev/when/blob/master/rules/br) - Brazilian Portuguese
 - [ZH](https://github.com/olebedev/when/blob/master/rules/zh) - Chinese
@@ -56,10 +86,15 @@ The project follows the official [release workflow](https://go.dev/doc/modules/r
 To install the latest version:
 
 ```
-$ go get github.com/olebedev/when@latest
+$ go get github.com/runableapp/when-ng@latest
 ```
 
 ### Usage
+
+See `tests/test_cases.go` also.
+
+
+
 
 ```go
 w := when.New(nil)
@@ -117,13 +152,12 @@ fmt.Printf(r.Time.String())
 
 ### State of the project
 
-The project is in a more-or-less complete state. It's used for one project already. Bugs will be fixed as soon as they will be found.
+This project is maintained primarily to support the needs of Runable.app, and will be updated as our requirements evolve. We strive to accommodate any issues reported or enhancement requests submitted through GitHub issues.
 
 ### TODO
 
-- [ ] readme: describe all the existing rules
-- [ ] implement missed rules for [these examples](https://github.com/mojombo/chronic#examples)
-- [ ] add cli and simple rest api server([#2](https://github.com/olebedev/when/issues/2))
+- [ ] language `en`: rules for [these examples](https://github.com/mojombo/chronic#examples).  See `tests/test_cases.txt`
+
 
 ### LICENSE
 
